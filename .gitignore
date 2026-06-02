@@ -1,0 +1,42 @@
+# Env / secrets
+.env
+.env.*
+*.env
+*.local
+backend/.env
+backend/.env.*
+backend/*.env
+
+# Python
+.venv/
+venv/
+backend/.venv/
+backend/venv/
+__pycache__/
+*/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local database
+*.db
+backend/*.db
+backend/data/
+backend/studyflow.db
+
+# Local uploads
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Logs/cache
+*.log
+.cache/
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

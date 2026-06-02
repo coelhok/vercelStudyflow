@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configurações - StudyFlow PDF AI</title>
+  <link rel="stylesheet" href="/static/css/global.css?v=1.1.1" />
+  <link rel="stylesheet" href="/static/css/dashboard.css?v=1.1.1" />
+  <link rel="stylesheet" href="/static/css/auth.css?v=1.1.1" />
+  <script>
+    if (!localStorage.getItem('studyflow_token')) {
+      window.location.replace('/login');
+    }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><div class="logo">S</div><strong>StudyFlow <span>PDF AI</span></strong></a>
+    <div class="top-actions"><a class="btn ghost" href="/notebook">Voltar ao agente</a></div>
+  </header>
+  <main class="page-shell dashboard">
+    <aside class="nav-panel card">
+      <a class="nav-link" href="/dashboard">▦ Dashboard</a>
+      <a class="nav-link" href="/notebook">✦ Agente de IA</a>
+      <a class="nav-link" href="/history">◷ Histórico</a>
+      <a class="nav-link active" href="/settings">⚙ Configurações</a>
+    </aside>
+    <section class="dash-main">
+      <div class="dash-head card"><div><h1>Configurações</h1><p>A API está integrada ao FastAPI em /api.</p></div></div>
+      <form id="settingsForm" class="auth-card card" style="width:100%;max-width:680px">
+        <div class="field"><label>API integrada</label><input id="apiBase" placeholder="/api" /></div>
+        <button class="btn primary" type="submit">Salvar configurações</button>
+      </form>
+    </section>
+  </main>
+  <script src="/static/js/api.js?v=1.1.1"></script>
+  <script src="/static/js/settings.js?v=1.1.1"></script>
+</body>
+</html>

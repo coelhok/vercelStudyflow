@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastrar - StudyFlow PDF AI</title>
+  <link rel="stylesheet" href="/static/css/global.css?v=1.1.1" />
+  <link rel="stylesheet" href="/static/css/auth.css?v=1.1.1" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><div class="logo">S</div><strong>StudyFlow <span>PDF AI</span></strong></a>
+    <div class="top-actions"><a class="btn" href="/">Voltar</a></div>
+  </header>
+  <main class="center-page">
+    <form id="registerForm" class="auth-card card">
+      <h1>Criar conta</h1>
+      <p>Cadastro visual para apresentação. A autenticação real entra na próxima etapa.</p>
+      <div class="field"><label>Nome</label><input id="name" placeholder="Seu nome" required /></div>
+      <div class="field"><label>Email</label><input id="email" type="email" placeholder="seuemail@exemplo.com" required /></div>
+      <div class="field"><label>Senha</label><input id="password" type="password" placeholder="••••••••" required /></div>
+      <div id="authError" class="auth-error" role="alert"></div>
+      <button class="btn primary full" type="submit">Cadastrar</button>
+      <div class="auth-switch">Já tem conta? <a href="/login">Entrar</a></div>
+    </form>
+  </main>
+  <script src="/static/js/api.js?v=1.1.1"></script>
+  <script src="/static/js/auth.js?v=1.1.1"></script>
+</body>
+</html>

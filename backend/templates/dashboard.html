@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - StudyFlow PDF AI</title>
+  <link rel="stylesheet" href="/static/css/global.css?v=1.1.1" />
+  <link rel="stylesheet" href="/static/css/dashboard.css?v=1.1.1" />
+  <script>
+    if (!localStorage.getItem('studyflow_token')) {
+      window.location.replace('/login');
+    }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><div class="logo">S</div><strong>StudyFlow <span>PDF AI</span></strong></a>
+    <div class="top-actions">
+      <a class="btn ghost" href="/notebook">+ Novo notebook</a>
+      <button id="logoutBtn" class="btn danger" type="button">Sair</button>
+    </div>
+  </header>
+  <main class="page-shell dashboard">
+    <aside class="nav-panel card">
+      <a class="nav-link active" href="/dashboard">▦ Dashboard</a>
+      <a class="nav-link" href="/notebook">✦ Agente de IA</a>
+      <a class="nav-link" href="/history">◷ Histórico</a>
+      <a class="nav-link" href="/settings">⚙ Configurações</a>
+    </aside>
+    <section class="dash-main">
+      <div class="dash-head card">
+        <div><h1>Seus estudos</h1><p>Olá, <strong data-user-name>usuário</strong>. Organize PDFs, DOCX e TXT em notebooks com IA.</p></div>
+        <a class="btn primary" href="/notebook">Abrir agente</a>
+      </div>
+      <div class="stats">
+        <div class="stat card"><small>Notebooks</small><strong id="statNotebooks">0</strong></div>
+        <div class="stat card"><small>Documentos</small><strong id="statDocs">0</strong></div>
+        <div class="stat card"><small>Materiais</small><strong>6</strong></div>
+        <div class="stat card"><small>Status</small><strong>OK</strong></div>
+      </div>
+      <div class="content-grid">
+        <div class="section card"><h2>Notebooks recentes</h2><div id="dashNotebookList" class="empty">Carregando...</div></div>
+        <div class="section card"><h2>PDFs recentes</h2><div id="dashDocumentList" class="empty">Carregando...</div></div>
+      </div>
+    </section>
+  </main>
+  <script src="/static/js/api.js?v=1.1.1"></script>
+  <script src="/static/js/dashboard.js?v=1.1.1"></script>
+</body>
+</html>

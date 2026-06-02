@@ -1,0 +1,5 @@
+.auth-card{width:min(460px,100%);padding:34px}.auth-card h1{font-size:34px;margin:0 0 8px}.auth-card p{margin:0 0 26px;color:var(--muted);line-height:1.5}.field{display:grid;gap:8px;margin-bottom:16px}.field label{font-weight:800;color:#d8def0}.field input{height:50px;border-radius:12px;border:1px solid var(--line);background:#071225;color:white;padding:0 14px;outline:0}.field input:focus{border-color:var(--purple);box-shadow:0 0 0 4px rgba(124,77,255,.13)}.auth-switch{margin-top:18px;color:var(--muted);text-align:center}.auth-switch a{color:#c4b5fd;font-weight:900}
+.auth-error{color:#fca5a5;background:rgba(127,29,29,.25);border:1px solid rgba(248,113,113,.35);border-radius:12px;padding:10px 12px;margin:8px 0;min-height:20px;font-size:.92rem}.auth-error:empty{display:none}
+
+/* Build 8 - Login/cadastro mobile */
+@media(max-width:620px){.center-page{padding:18px;place-items:stretch center}.auth-card{padding:26px 20px;border-radius:20px;margin:auto 0}.auth-card h1{font-size:30px;text-align:center}.auth-card p{text-align:center}.field input{height:54px;font-size:16px}.auth-card .btn{height:52px;width:100%}}

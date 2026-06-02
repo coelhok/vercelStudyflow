@@ -1,0 +1,2 @@
+-- Schema de referência. O sistema cria as tabelas automaticamente no startup.
+-- Em produção, use DATABASE_URL do Supabase PostgreSQL.
