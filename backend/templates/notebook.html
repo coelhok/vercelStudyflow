@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agente - StudyFlow PDF AI</title>
+  <link rel="stylesheet" href="/static/css/global.css?v=1.1.0" />
+  <link rel="stylesheet" href="/static/css/notebook.css?v=1.1.0" />
+  <script>
+    if (!localStorage.getItem('studyflow_token')) {
+      window.location.replace('/login');
+    }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/dashboard"><div class="logo">S</div><strong>StudyFlow <span>PDF AI</span></strong></a>
+    <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+    <div class="top-actions">
+      <a class="btn" href="/dashboard">Dashboard</a>
+      <button id="newNotebookBtn" class="btn ghost">+ Novo notebook</button>
+      <button id="logoutBtn" class="btn danger" type="button">Sair</button>
+    </div>
+  </header>
+
+  <main class="notebook-shell">
+    <aside class="sidebar">
+      <div class="sidebar-scroll">
+        <div class="mobile-drawer-head"><h2>Sessões e PDFs</h2><button id="closeSourcesBtn" type="button" aria-label="Fechar">×</button></div>
+        <h2 class="desktop-sidebar-title">Sessões e PDFs</h2>
+        <p class="label">Sessões</p>
+        <div id="notebookList" class="session-list"></div>
+
+        <div class="sources-head">
+          <p class="label">Fontes salvas</p>
+          <span id="selectedCount" class="selected-count">0 selecionadas</span>
+          <button id="clearSelectionBtn" class="mini-btn" type="button">Limpar</button>
+        </div>
+        <form id="uploadForm" class="upload-box">
+          <label class="file-picker">
+            <input id="fileInput" type="file" accept=".pdf,.docx,.txt" multiple />
+            <span>📎</span><span id="fileName" class="file-name">Escolher PDF, DOCX ou TXT</span>
+          </label>
+          <button class="btn full primary" type="submit">Adicionar fonte</button>
+        </form>
+        <div id="documentList" class="document-list"></div>
+      </div>
+      <div class="status-stack">
+        <div id="dbStatus" class="status warn">Banco aguardando...</div>
+        <div id="uploadStatus" class="status warn">Nenhum arquivo enviado</div>
+      </div>
+    </aside>
+
+    <section class="agent-panel">
+      <div class="panel-title">✦ Agente de IA</div>
+
+      <div id="agentState" class="agent-state idle">
+        <div>
+          <strong>Agente pronto</strong>
+          <p id="agentStateText">Selecione uma ou mais fontes e envie um comando.</p>
+        </div>
+        <div class="agent-pill" id="agentModePill">aguardando</div>
+      </div>
+
+      <div id="chatBox" class="chat-box">
+        <div class="msg assistant">
+          <div class="avatar">✦</div>
+          <div class="bubble">
+            <p>Olá! Sou o seu Agente de IA do StudyFlow.</p>
+            <p>Posso analisar um ou vários PDFs, DOCX e TXT selecionados. Eu vou mostrar meu processo em tempo real: fontes usadas, etapa atual e modo de análise.</p>
+            <p><strong>Escolha suas fontes e diga o que você quer que eu faça.</strong></p>
+            <small>14:32</small>
+          </div>
+        </div>
+      </div>
+
+      <form id="chatForm" class="composer">
+        <input id="messageInput" placeholder="Digite sua mensagem ou comando..." autocomplete="off" />
+        <button type="submit" aria-label="Enviar">➤</button>
+      </form>
+
+      <div class="quick-actions" id="quickActionsPanel">
+        <div class="mobile-drawer-head quick-actions-head"><h2>Ações rápidas</h2><button id="closeActionsBtn" type="button" aria-label="Fechar">×</button></div>
+        <button data-prompt="Analise os documentos selecionados e prepare um resumo."><span class="action-ico">▣</span>Resumo</button>
+        <button data-prompt="Analise os documentos selecionados e prepare um questionário."><span class="action-ico">▦</span>Questionário</button>
+        <button data-prompt="Analise os documentos selecionados e prepare um fluxograma."><span class="action-ico">▤</span>Fluxograma</button>
+        <button data-prompt="Analise os documentos selecionados e prepare um plano de estudo."><span class="action-ico">▥</span>Plano de estudo</button>
+        <button data-prompt="Explique o conteúdo dos documentos como se eu fosse iniciante."><span class="action-ico">◉</span>Explicar como iniciante</button>
+        <button data-prompt="Compare os documentos selecionados."><span class="action-ico">⇄</span>Comparar PDFs</button>
+        <button data-prompt="Prepare flashcards com base nos documentos selecionados."><span class="action-ico">▧</span>Flashcards</button>
+        <button data-prompt="Faça uma revisão rápida dos documentos selecionados."><span class="action-ico">⚡</span>Revisão rápida</button>
+      </div>
+    </section>
+  </main>
+
+
+  <div id="mobileOverlay" class="mobile-overlay" hidden></div>
+  <nav class="mobile-bottom-nav" aria-label="Navegação mobile">
+    <button type="button" data-mobile-tab="chat">☁<span>Chat</span></button>
+    <button type="button" data-mobile-tab="pdfs">▣<span>PDFs</span></button>
+    <button type="button" data-mobile-tab="actions">✣<span>Ações</span></button>
+    <button type="button" data-mobile-tab="more">⋯<span>Mais</span></button>
+  </nav>
+  <aside id="mobileMoreSheet" class="mobile-more-sheet" aria-label="Mais opções">
+    <div class="mobile-drawer-head"><h2>Menu</h2><button id="closeMoreBtn" type="button" aria-label="Fechar">×</button></div>
+    <a href="/dashboard">▦ Dashboard</a>
+    <a href="/notebook">✦ Agente de IA</a>
+    <a href="/history">◷ Histórico</a>
+    <a href="/settings">⚙ Configurações</a>
+    <button id="mobileLogoutBtn" type="button">⎋ Sair</button>
+  </aside>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="/static/js/api.js?v=1.1.0"></script>
+  <script src="/static/js/notebook.js?v=1.1.0"></script>
+  <script src="/static/js/upload.js?v=1.1.0"></script>
+  <script src="/static/js/chat.js?v=1.1.0"></script>
+</body>
+</html>

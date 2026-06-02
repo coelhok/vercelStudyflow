@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrar - StudyFlow PDF AI</title>
+  <link rel="stylesheet" href="/static/css/global.css?v=1.1.0" />
+  <link rel="stylesheet" href="/static/css/auth.css?v=1.1.0" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><div class="logo">S</div><strong>StudyFlow <span>PDF AI</span></strong></a>
+    <div class="top-actions"><a class="btn" href="/">Voltar</a></div>
+  </header>
+  <main class="center-page">
+    <form id="loginForm" class="auth-card card">
+      <h1>Entrar</h1>
+      <p>Acesse seus notebooks, PDFs salvos e histórico de interações.</p>
+      <div class="field"><label>Email</label><input id="email" type="email" placeholder="seuemail@exemplo.com" required /></div>
+      <div class="field"><label>Senha</label><input id="password" type="password" placeholder="••••••••" required /></div>
+      <div id="authError" class="auth-error" role="alert"></div>
+      <button class="btn primary full" type="submit">Entrar</button>
+      <div class="auth-switch">Ainda não tem conta? <a href="/register">Criar cadastro</a></div>
+    </form>
+  </main>
+  <script src="/static/js/api.js?v=1.1.0"></script>
+  <script src="/static/js/auth.js?v=1.1.0"></script>
+</body>
+</html>
