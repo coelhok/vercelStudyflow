@@ -1,0 +1,23 @@
+.dashboard{display:grid;grid-template-columns:280px 1fr;gap:22px;min-height:calc(100vh - 130px)}.nav-panel{padding:22px;position:sticky;top:98px;height:calc(100vh - 126px)}.nav-link{display:flex;align-items:center;gap:12px;padding:14px;border-radius:12px;color:#c8d2e9;margin-bottom:8px}.nav-link.active,.nav-link:hover{background:#211655;color:white;outline:1px solid #5d36d6}.dash-main{display:grid;gap:22px}.dash-head{padding:26px;display:flex;justify-content:space-between;gap:20px;align-items:center}.dash-head h1{margin:0;font-size:34px}.dash-head p{margin:8px 0 0;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.stat{padding:20px}.stat small{color:var(--muted);display:block;margin-bottom:12px}.stat strong{font-size:30px}.content-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}.section{padding:24px}.section h2{margin:0 0 18px}.notebook-card,.history-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#0c1830;margin-bottom:12px}.notebook-card:hover,.history-row:hover{border-color:var(--purple)}.file-badge{width:42px;height:42px;border-radius:10px;background:#ff465d;display:grid;place-items:center;font-size:12px;font-weight:900}.empty{padding:24px;border:1px dashed var(--line-2);border-radius:14px;color:var(--muted);text-align:center}@media(max-width:1000px){.dashboard,.content-grid{grid-template-columns:1fr}.nav-panel{position:static;height:auto}.stats{grid-template-columns:1fr 1fr}}@media(max-width:620px){.stats{grid-template-columns:1fr}.dash-head{display:block}.notebook-card,.history-row{align-items:flex-start;flex-direction:column}}
+
+/* Build 8 - Dashboard mobile */
+@media(max-width:760px){.dashboard{display:block;padding:12px;min-height:auto}.nav-panel{display:none}.dash-main{gap:14px}.dash-head{padding:18px;border-radius:16px}.dash-head h1{font-size:26px}.dash-head .btn{margin-top:16px;width:100%}.stats{grid-template-columns:1fr 1fr;gap:10px}.stat{padding:15px;border-radius:15px}.stat strong{font-size:24px}.content-grid{grid-template-columns:1fr;gap:14px}.section{padding:16px;border-radius:16px}.notebook-card,.history-row{flex-direction:row;align-items:center;padding:13px;border-radius:14px}.file-badge{width:36px;height:36px}.empty{padding:16px}}
+@media(max-width:420px){.stats{grid-template-columns:1fr}.notebook-card,.history-row{align-items:flex-start;flex-direction:column}}
+
+
+/* Build 8.3 - correção de scroll horizontal e centralização mobile */
+html,body{max-width:100%;overflow-x:hidden;}
+.dashboard,.dash-main,.content-grid,.stats,.section,.dash-head{min-width:0;max-width:100%;}
+.notebook-card,.history-row{min-width:0;overflow:hidden;}
+.notebook-card > *, .history-row > *{min-width:0;}
+.notebook-card strong,.history-row strong,.notebook-card span,.history-row span{overflow-wrap:anywhere;}
+@media(max-width:760px){
+  body{overflow-x:hidden!important;}
+  .page-shell.dashboard{width:100%!important;max-width:100%!important;margin:0!important;padding:10px!important;overflow-x:hidden!important;}
+  .dash-main{width:100%!important;max-width:100%!important;overflow-x:hidden!important;}
+  .dash-head,.section,.stat{width:100%!important;max-width:100%!important;box-sizing:border-box!important;}
+  .stats{width:100%!important;max-width:100%!important;grid-template-columns:1fr 1fr!important;}
+  .content-grid{width:100%!important;max-width:100%!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;}
+  .notebook-card,.history-row{width:100%!important;max-width:100%!important;}
+}
+@media(max-width:420px){.stats{grid-template-columns:1fr!important}.page-shell.dashboard{padding:8px!important}.dash-head{padding:14px!important}.section{padding:14px!important}}
